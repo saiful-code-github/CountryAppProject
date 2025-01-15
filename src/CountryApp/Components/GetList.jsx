@@ -3,7 +3,7 @@
 export const GetList = ({ handleDelete, filteredData}) =>{
     return (
         <div>
-        <ul className="grid grid-cols-4 gap-3">
+        <ul className="md:grid md:grid-cols-4 md:gap-3  gap-4 grid grid-cols-1 md:mx-7 mx-3">
         {filteredData.map((item, index)=> {
          const {flags, name, population, capital, cca3} = item;
          return (
