@@ -2,13 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { GetList } from "./Components/GetList";
 import { Form } from "./Components/Form";
+import { FaArrowUp } from "react-icons/fa";
 
 const baseURL ='https://restcountries.com/v3.1/all' ;
 export const CountryApp = () =>{
     const [country, setCountry] = useState([]);
     const [loading, setLoading] =  useState(false);
     const [filteredData, setFilteredData] = useState([]);
+    const [scrollTop, setScrollTop] =  useState(false);
 
+
+    /// handleToptoBottom button
+    const hanldeToptoBottom = () =>{
+        window.scrollTo({
+          top:0,
+          behavior: "smooth"
+        })
+    }
     //get method
      const getData = async () =>{
           try {
@@ -27,6 +37,16 @@ export const CountryApp = () =>{
      }
      useEffect(()=>{
         getData();
+        const scollToTop = () =>{
+          if(window.scrollY > 300){
+            setScrollTop(true)
+          }else{
+            setScrollTop(false)
+          }
+        }
+        window.addEventListener('scroll', scollToTop);
+        return () => window.removeEventListener('scroll', scollToTop)
+
      },[])
      //delted method
 
@@ -50,6 +70,12 @@ export const CountryApp = () =>{
                <GetList handleDelete={handleDelete} filteredData={filteredData}/>
              )
             }
+            {/* scroll top to bottom button */}
+            {scrollTop && (
+            <div className="bg-yellow-500 p-3 shadow-2xl text-center scroll_up" onClick={hanldeToptoBottom}>
+            <FaArrowUp style={{color: '#fff',fontSize: "20px"}}/>
+             </div>
+            )}
         </div>
     )
 }
