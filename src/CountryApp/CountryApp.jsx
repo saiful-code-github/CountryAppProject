@@ -60,7 +60,7 @@ export const CountryApp = () =>{
         }
      }
     return (
-        <div>
+        <div className="max-w-7xl mx-auto">
             <h1 className="text-center mb-4 text-[28px]">Country App</h1>
             <Form country={country} setFilteredData={setFilteredData}/>
             {loading ? (
