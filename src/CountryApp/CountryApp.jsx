@@ -72,7 +72,7 @@ export const CountryApp = () =>{
             }
             {/* scroll top to bottom button */}
             {scrollTop && (
-            <div className="bg-yellow-500 p-3 shadow-2xl text-center scroll_up" onClick={hanldeToptoBottom}>
+            <div className="bg-yellow-500 p-3 shadow-2xl text-center scroll_up cursor-pointer" onClick={hanldeToptoBottom}>
             <FaArrowUp style={{color: '#fff',fontSize: "20px"}}/>
              </div>
             )}
